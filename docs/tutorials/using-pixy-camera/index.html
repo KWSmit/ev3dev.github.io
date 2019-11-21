@@ -1,0 +1,770 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Using Pixy/Pixy2 camera for LEGO Mindstorms</title>
+    
+    <!-- Description content not available -->
+    
+    <link rel="alternate" type="application/atom+xml" href="/ev3dev.github.io/news/atom.xml" title="Atom feed">
+    <link rel="icon" href="/ev3dev.github.io/favicon.ico" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/bootstrap.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/site-structure.css">
+    <link rel="stylesheet" href="/ev3dev.github.io/stylesheets/landing-content.css">
+
+    <!-- Template for search results -->
+    <script type="text/html" id="search-result-template">
+        <div class="search-result">
+            <a data-href="href"><h4 data-content="title"></h4></a>
+            <span data-content="breadcrumbs" class="search-result-breadcrumbs"></span>
+            <span data-content="author" class="search-result-author"></span><br/>
+        </div>
+    </script>
+
+    
+
+    
+        <!-- Google Analytics excluded: not an official site build -->
+    
+</head>
+
+
+<body class="no-jumbotron ">
+
+    <div id="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ev3dev.github.io/">
+                    <img id="brand-logo" src="/ev3dev.github.io/images/ev3dev_logo_white.png" alt="ev3dev logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="main-nav">
+                    <li>
+                        <a href="/ev3dev.github.io/docs/getting-started" title="Our Getting Started guide">Start Here</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/downloads" title="SD card images for ev3dev">Downloads</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" title="Documentation on using ev3dev">
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/docs/tutorials">Tutorials</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/programming-languages">Programming Languages</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs/networking">Networking</a>
+                            </li>
+                            <li>
+                                <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/">
+                                    Hardware Drivers
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://github.com/ev3dev/ev3dev/wiki">
+                                    Wiki
+                                    <i class="fa fa-external-link external-link-nav-icon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/docs">More...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/support" title="Get Help with ev3dev">Support</a>
+                    </li>
+                    <li>
+                        <a href="/ev3dev.github.io/news" title="ev3dev news">News</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Community
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ev3dev.github.io/contribute" title="How to contribute to ev3dev">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/share" title="Share the word on ev3dev with others">Share</a>
+                            </li>
+                            <li>
+                                <a href="/ev3dev.github.io/projects" title="Discover projects that use ev3dev">Project showcase</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- items below float right, so appear in reverse order -->
+                <div id="search-container">
+                    <form class="navbar-form navbar-right dropdown" onsubmit="return false;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Quick nav" autocomplete="off" />
+                        <div class="dropdown-menu" id="search-dropdown">
+                            <div class="search-results-container" id="search-no-data-warning">
+                                <span class="glyphicon glyphicon-alert heading-icon" aria-hidden="true"></span>
+                                We were unable to retrieve search data from the
+                                server. Make sure that JavaScript is enabled and
+                                that nothing is blocking network access.
+                            </div>
+
+                            <div class="search-results-container" id="search-results-docs">
+                                <h2>In docs</h2>
+                                <div data-content="docs-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-projects">
+                                <h2>In projects</h2>
+                                <div data-content="project-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-news">
+                                <h2>In news</h2>
+                                <div data-content="news-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+
+                            <div class="search-results-container" id="search-results-misc">
+                                <h2>In other pages</h2>
+                                <div data-content="misc-results">
+                                    <div class="no-results-note">No results</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+    
+    
+    <div class="container">
+        
+
+<div class="page-header">
+    
+        <a class="btn btn-primary pull-right" href="https://github.com/ev3dev/ev3dev.github.io/edit/master/docs/tutorials/using-pixy-camera.md"><span class="glyphicon glyphicon-pencil"></span> Edit on Github</a>
+    
+    <h1>
+        Using Pixy/Pixy2 camera for LEGO Mindstorms
+        <small></small>
+    </h1>
+</div>
+    </div>
+    
+    
+    <div class="container">
+    
+        <hr />
+<div class="nav-dropdown-arrow">
+    <div>
+        
+
+<ol class="breadcrumb" vocab="http://schema.org" typeof="BreadcrumbList">
+    
+    
+
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/" property="item" typeof="WebPage">
+                <span property="name">Documentation</span>
+            </a>
+            <meta property="position" content="1">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="">
+            <a href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Tutorials</span>
+            </a>
+            <meta property="position" content="2">
+        </li>
+        
+    
+        
+
+        
+        
+
+        <li property="itemListElement" typeof="ListItem" class="active">
+            <span href="/ev3dev.github.io/docs/tutorials/" property="item" typeof="WebPage">
+                <span property="name">Using Pixy/Pixy2 camera for LEGO Mindstorms</span>
+            </span>
+            <meta property="position" content="3">
+        </li>
+        
+    
+</ol>
+    </div>
+    
+</div>
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#intro" id="markdown-toc-intro">Intro</a></li>
+  <li><a href="#what-you-need" id="markdown-toc-what-you-need">What you need</a></li>
+  <li><a href="#using-pixy-for-lego-mindstorms" id="markdown-toc-using-pixy-for-lego-mindstorms">Using Pixy for LEGO Mindstorms</a>    <ul>
+      <li><a href="#example-for-pixy---display-detected-object-on-ev3-lcd" id="markdown-toc-example-for-pixy---display-detected-object-on-ev3-lcd">Example for Pixy - Display detected object on EV3-LCD</a></li>
+    </ul>
+  </li>
+  <li><a href="#using-pixy2-for-lego-mindstorms" id="markdown-toc-using-pixy2-for-lego-mindstorms">Using Pixy2 for LEGO Mindstorms</a>    <ul>
+      <li><a href="#example-for-pixy2---display-detected-object-on-ev3-lcd" id="markdown-toc-example-for-pixy2---display-detected-object-on-ev3-lcd">Example for Pixy2 - Display detected object on EV3-LCD</a></li>
+    </ul>
+  </li>
+  <li><a href="#more-info" id="markdown-toc-more-info">More info</a></li>
+</ul>
+
+<h2 id="intro">Intro</h2>
+
+<p>Both versions of the Pixy camera, Pixy and Pixy2, are available in a special
+LEGO version. In this tutorial we explain how to use them on ev3dev and using
+Python.</p>
+
+<p>General information about Pixy/Pixy2 for LEGO Mindstorms can be found on
+Charmed Lab’s <a href="https://docs.pixycam.com">wiki-page</a>.</p>
+
+<p>On ev3dev there is a difference in using Pixy or Pixy2: ev3dev does contain
+a driver for Pixy, but not for Pixy2. But it’s easy to use Pixy2 by setting
+up direct I2C communication between the EV3 and Pixy2. Both methods will be
+explained. At the end of this tutorial you will find a link to a Github
+repository containing more detailed information and more examples
+(including the linetracking functionality of Pixy2).</p>
+
+<h2 id="what-you-need">What you need</h2>
+
+<ul>
+  <li>LEGO Mindstorms EV3 running on ev3dev.</li>
+  <li>Pixy for LEGO Mindstorms or Pixy2 for LEGO Mindstorms. The camera is
+connected to the EV3 with the cable delivered with your Pixy or Pixy2.</li>
+</ul>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Notes
+</div>
+<div class="panel-body">
+
+    <ul>
+      <li>The camera comes with its own tool: PixyMon. This tool helps
+you to set the signatures (objects you want Pixy/Pixy2 to detect).
+To use this tool you need to connect the camera directly to your PC
+by using a mini USB cable. When using Pixy, be aware that when PixyMon
+is running on your PC and the camera is plugged in to your PC, its
+values are not updated to the EV3. So before starting your script on
+the EV3 be sure PixyMon is not running!
+<strong>This relates to Pixy only, not to Pixy2!</strong></li>
+      <li>To run the scripts from Brickman, be sure it’s executable. To make it
+executable run <code class="highlighter-rouge">chmod +x &lt;file&gt;</code> once in the terminal. Also don’t forget
+the shebang <code class="highlighter-rouge"><span class="c1">#!/usr/bin/env python3</span></code> in the first line of your script.</li>
+      <li>When running the scripts in this tutorial from an SSH-terminal, run the script
+with the command <code class="highlighter-rouge">brickrun -- python3 your-sript.py</code>. Reason is that
+<code class="highlighter-rouge">brickrun</code> will take care of switching between consoles to prevent
+the userinterface of Brickman to reappear at any time when your script is
+running.</li>
+    </ul>
+
+  </div>
+</div>
+
+<h2 id="using-pixy-for-lego-mindstorms">Using Pixy for LEGO Mindstorms</h2>
+
+<p>In python use the <code class="highlighter-rouge">Sensor</code> class to connect to the Pixy camera:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="kn">from</span> <span class="nn">ev3dev2.sensor</span> <span class="kn">import</span> <span class="n">Sensor</span><span class="p">,</span> <span class="n">INPUT_1</span>
+<span class="kn">from</span> <span class="nn">ev3dev2.port</span> <span class="kn">import</span> <span class="n">LegoPort</span>
+
+
+<span class="c1"># Set LEGO port for Pixy on input port 1
+</span><span class="n">in1</span> <span class="o">=</span> <span class="n">LegoPort</span><span class="p">(</span><span class="n">INPUT_1</span><span class="p">)</span>
+<span class="n">in1</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'auto'</span>
+<span class="c1"># Wait 2 secs for the port to get ready
+</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Connect Pixy camera
+</span><span class="n">pixy</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">INPUT_1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In this example it is assumed the camera is connected to input port 1.
+Next set the mode for the camera:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Set mode to detect signature 1 only
+</span><span class="n">pixy</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'SIG1'</span>
+</code></pre></div></div>
+
+<p>The Pixy camera has the following modes:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">ALL</code>: the camera searches for all signatures you’ve set for it.</li>
+  <li><code class="highlighter-rouge">SIGn</code>: the camera searches for signature #n (n=1 to 7).</li>
+</ul>
+
+<p>The data which you retrieve from the camera depends on the camera mode. You
+can find detailed information on <a href="http://docs.ev3dev.org/projects/lego-linux-drivers/en/ev3dev-stretch/sensor_data.html#pixy-lego">this page</a>.
+We will explain it to you with a simple example.</p>
+
+<p>When the mode is set to <code class="highlighter-rouge">ALL</code>, you can retrieve data as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sig</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="err"> </span><span class="c1"># Signature of largest object
+</span><span class="n">x_centroid</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>    <span class="c1"># X-centroid of largest SIG1-object
+</span><span class="n">y_centroid</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c1"># Y-centroid of largest SIG1-object
+</span><span class="n">width</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>         <span class="c1"># Width of the largest SIG1-object
+</span><span class="n">height</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>        <span class="c1"># Height of the largest SIG1-object
+</span></code></pre></div></div>
+
+<p>When mode is set to one of the signatures (e.g. <code class="highlighter-rouge">SIG1</code>), retrieve data
+as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">count</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="err"> </span> <span class="c1"># The number of objects that match signature 1
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># X-centroid of the largest SIG1-object
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># Y-centroid of the largest SIG1-object
+</span><span class="n">w</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>      <span class="c1"># Width of the largest SIG1-object
+</span><span class="n">h</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>      <span class="c1"># Height of the largest SIG1-object
+</span></code></pre></div></div>
+
+<h3 id="example-for-pixy---display-detected-object-on-ev3-lcd">Example for Pixy - Display detected object on EV3-LCD</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="kn">from</span> <span class="nn">ev3dev2.display</span> <span class="kn">import</span> <span class="n">Display</span>
+<span class="kn">from</span> <span class="nn">ev3dev2.sensor</span> <span class="kn">import</span> <span class="n">Sensor</span><span class="p">,</span> <span class="n">INPUT_1</span><span class="p">,</span> <span class="n">INPUT_4</span>
+<span class="kn">from</span> <span class="nn">ev3dev2.sensor.lego</span> <span class="kn">import</span> <span class="n">TouchSensor</span>
+<span class="kn">from</span> <span class="nn">ev3dev2.port</span> <span class="kn">import</span> <span class="n">LegoPort</span>
+
+
+<span class="c1"># EV3 Display
+</span><span class="n">lcd</span> <span class="o">=</span> <span class="n">Display</span><span class="p">()</span>
+
+<span class="c1"># Connect TouchSensor
+</span><span class="n">ts</span> <span class="o">=</span> <span class="n">TouchSensor</span><span class="p">(</span><span class="n">INPUT_4</span><span class="p">)</span>
+
+<span class="c1"># Set LEGO port for Pixy on input port 1
+</span><span class="n">in1</span> <span class="o">=</span> <span class="n">LegoPort</span><span class="p">(</span><span class="n">INPUT_1</span><span class="p">)</span>
+<span class="n">in1</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'auto'</span>
+<span class="c1"># Wait 2 secs for the port to get ready
+</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Connect Pixy camera
+</span><span class="n">pixy</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">INPUT_1</span><span class="p">)</span>
+
+<span class="c1"># Set mode to detect signature 1 only
+</span><span class="n">pixy</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'SIG1'</span>
+
+<span class="c1"># Read and display data until TouchSensor is pressed
+</span><span class="k">while</span> <span class="ow">not</span> <span class="n">ts</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+    <span class="c1"># Clear EV3 display
+</span>    <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="c1"># Read values from Pixy
+</span>    <span class="n">x</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>     <span class="c1"># X-coordinate of centerpoint of object
+</span>    <span class="n">y</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Y-coordinate of centerpoint of object
+</span>    <span class="n">w</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>     <span class="c1"># Width of rectangle around detected object
+</span>    <span class="n">h</span> <span class="o">=</span> <span class="n">pixy</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>     <span class="c1"># Heigth of rectangle around detected object
+</span>    <span class="c1"># scale to resolution of EV3 display:
+</span>    <span class="c1"># Resolution Pixy while color tracking: (255x199)
+</span>    <span class="c1"># Resolution EV3 display: (178x128)
+</span>    <span class="n">x</span> <span class="o">*=</span> <span class="mf">0.7</span>
+    <span class="n">y</span> <span class="o">*=</span> <span class="mf">0.6</span>
+    <span class="n">w</span> <span class="o">*=</span> <span class="mf">0.7</span>
+    <span class="n">h</span> <span class="o">*=</span> <span class="mf">0.6</span>
+    <span class="c1"># Calculate reactangle to draw on EV3-display
+</span>    <span class="n">dx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>         <span class="c1"># Half of the width of the rectangle
+</span>    <span class="n">dy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>         <span class="c1"># Half of the height of the rectangle
+</span>    <span class="n">xa</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">dx</span>           <span class="c1"># X-coordinate of top-left corner
+</span>    <span class="n">ya</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span>           <span class="c1"># Y-coordinate of the top-left corner
+</span>    <span class="n">xb</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>           <span class="c1"># X-coordinate of bottom-right corner
+</span>    <span class="n">yb</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">dy</span>           <span class="c1"># Y-coordinate of the bottom-right corner
+</span>    <span class="c1"># Draw rectangle on display
+</span>    <span class="n">lcd</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="n">xa</span><span class="p">,</span> <span class="n">ya</span><span class="p">,</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+    <span class="c1"># Update display to show rectangle
+</span>    <span class="n">lcd</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>In this example Pixy is set to mode <code class="highlighter-rouge">SIG1</code>. The program continuously reads
+data from the camera, until the TouchSensor is pressed. When valid data
+is received, the program calculates the size and shape of the bouncing box
+of the largest detected SIG1 object. Be aware that the resolution of the
+Pixy camera and the resolution of the EV3 display are not the same. Pixy’s
+resolution while color tracking is (255x199) and EV3’s resolution is
+(178x128). This means you have to scale the values from the Pixy!
+To update the bouncing box on the display, first the display needs to be
+cleared and then the bouncing box can be redrawn.</p>
+
+<p>This video shows this script running:</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/b2LZpY1qbKE?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<p><br /><br /></p>
+
+<h2 id="using-pixy2-for-lego-mindstorms">Using Pixy2 for LEGO Mindstorms</h2>
+
+<p>One important difference with the old Pixy is that you have to use Pixy2
+without a driver. An easy way to do this is by using the Python <code class="highlighter-rouge">smbus</code>
+module for setting up direct I2C communication between the EV3 and
+the Pixy2.</p>
+
+<p>First configure Pixy2 to communicate over I2C. For this you can use the
+PixyMon tool that comes with Pixy2. Open the configure dialog and click on
+the <code class="highlighter-rouge">Interface</code> tab.</p>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Note
+</div>
+<div class="panel-body">
+
+    <p>If you don’t see the Interface tab, you’re probably not running the right
+firmware on the Pixy2 camera. Be sure to run the stock version, instead of
+the LEGO version. See
+<a href="https://docs.pixycam.com/wiki/doku.php?id=wiki:v2:uploading_new_firmware">Pixy2 documentation</a> how to install firmware.</p>
+
+  </div>
+</div>
+
+<p><img src="/ev3dev.github.io/images/pixy-tutorial/pixymon-config.png" alt="Configure dialog in PixyMon" /></p>
+
+<p>Set <code class="highlighter-rouge">Data out port</code> to <code class="highlighter-rouge">I2C</code> and <code class="highlighter-rouge">I2C address</code> to <code class="highlighter-rouge">0x54</code> (or any other
+address you like).</p>
+
+<p>In your Python script import the module <code class="highlighter-rouge">smbus</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">smbus</span> <span class="kn">import</span> <span class="n">SMBus</span>
+</code></pre></div></div>
+
+<p>Next set the EV3 input port to <code class="highlighter-rouge">other-i2c</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="kn">from</span> <span class="nn">ev3dev2.port</span> <span class="kn">import</span> <span class="n">LegoPort</span>
+<span class="kn">from</span> <span class="nn">ev3dev2.sensor</span> <span class="kn">import</span> <span class="n">INPUT_1</span>
+
+<span class="c1"># Set LEGO port for Pixy2 on input port 1
+</span><span class="n">in1</span> <span class="o">=</span> <span class="n">LegoPort</span><span class="p">(</span><span class="n">INPUT_1</span><span class="p">)</span>
+<span class="n">in1</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'other-i2c'</span>
+<span class="c1"># Short wait for the port to get ready
+</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Define the I2C-bus:</p>
+
+<ul>
+  <li>for <code class="highlighter-rouge">INPUT_1</code>: <code class="highlighter-rouge">SMBus(3)</code></li>
+  <li>for <code class="highlighter-rouge">INPUT_2</code>: <code class="highlighter-rouge">SMBus(4)</code></li>
+  <li>for <code class="highlighter-rouge">INPUT_3</code>: <code class="highlighter-rouge">SMBus(5)</code></li>
+  <li>for <code class="highlighter-rouge">INPUT_4</code>: <code class="highlighter-rouge">SMBus(6)</code></li>
+</ul>
+
+<p>Assume we’re using port 1. Don’t forget to use the same I2C-address as
+configured on the Pixy2 (<code class="highlighter-rouge">0x54</code>):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1"># Settings for I2C (SMBus(3) for INPUT_1)
+</span> <span class="n">bus</span> <span class="o">=</span> <span class="n">SMBus</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+ <span class="n">address</span> <span class="o">=</span> <span class="mh">0x54</span>
+</code></pre></div></div>
+
+<p>Now everything is set up to request and receive data form Pixy2. You can find
+the serial protocol on the
+<a href="https://docs.pixycam.com/wiki/doku.php?id=wiki:v2:porting_guide#pixy2-serial-protocol-packet-reference">Pixy2 wiki</a>.</p>
+
+<p>Each request starts with the same two bytes <code class="highlighter-rouge">174, 193</code>. The other bytes depend on the type of request. For instance, when you want to request the firmware version of the camera, your data packet will be (check Pixy2 documentation):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">174</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>You send this request to the camera as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bus</span><span class="o">.</span><span class="n">write_i2c_block_data</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now you can read the response:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">block</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">read_i2c_block_data</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The first parameter in this read function is the I2C-address of the camera.
+The second parameter is an offset, which is zero in this case. The third
+parameter is the number of bytes that the response contains. As you can
+see in the Pixy2 documentation, the version-request returns 13 bytes.
+According to the documentation you find the major version in byte 8 and the
+minor in byte 9:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'Firmware version: {}.{}</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">block</span><span class="p">[</span><span class="mi">8</span><span class="p">]),</span> <span class="nb">str</span><span class="p">(</span><span class="n">block</span><span class="p">[</span><span class="mi">9</span><span class="p">])))</span>
+</code></pre></div></div>
+
+<h3 id="example-for-pixy2---display-detected-object-on-ev3-lcd">Example for Pixy2 - Display detected object on EV3-LCD</h3>
+
+<p>This is the same as the previous example, but this time written for Pixy2.
+We like to detect objects with signature 1 and display the bouncing box on
+the display of the EV3-brick. For this we use <code class="highlighter-rouge">getBlocks()</code> to receive
+information about the detected object (see <a href="https://docs.pixycam.com/wiki/doku.php?id=wiki:v2:porting_guide#getblocks-sigmap-maxblocks">Pixy2 documentation</a>).
+The data packet for the request is like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">174</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sigs</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Where <code class="highlighter-rouge">sigs</code> is the signature or signatures we’re interested in. It is the
+sum of all desired signatures. So in case we’re only interested in
+signature 1 <code class="highlighter-rouge">sigs = 1</code> and when we’re interested in signatures 1, 2 and 3,
+then <code class="highlighter-rouge">sigs = 6 (1 + 2 + 3 = 6)</code>. In this example <code class="highlighter-rouge">sigs = 1</code>. So the request
+looks like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Request block
+</span><span class="n">bus</span><span class="o">.</span><span class="n">write_i2c_block_data</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We’re only interested in the largest detected object with signature 1, so the
+last byte of our data packet has the value 1. To read the response to our
+request:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read block
+</span><span class="n">block</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">read_i2c_block_data</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The response contains 20 bytes, hence the last parameter in
+<code class="highlighter-rouge">read_i2c_block_data()</code> is 20. Now we can extract the desired data:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>With this information we can calculate and display the bouncing box,
+just like in the example for Pixy. Be aware that the resolution of the
+Pixy2 camera and the resolution of the EV3 display are not the same.
+Pixy2’s resolution while color tracking is (316x208) and EV3’s resolution
+is (178x128). This means you have to scale the values from the Pixy2!</p>
+
+<p>Full code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">smbus</span> <span class="kn">import</span> <span class="n">SMBus</span>
+
+<span class="kn">from</span> <span class="nn">ev3dev2.display</span> <span class="kn">import</span> <span class="n">Display</span>
+<span class="kn">from</span> <span class="nn">ev3dev2.sensor</span> <span class="kn">import</span> <span class="n">INPUT_1</span><span class="p">,</span> <span class="n">INPUT_4</span>
+<span class="kn">from</span> <span class="nn">ev3dev2.sensor.lego</span> <span class="kn">import</span> <span class="n">TouchSensor</span>
+<span class="kn">from</span> <span class="nn">ev3dev2.port</span> <span class="kn">import</span> <span class="n">LegoPort</span>
+
+
+<span class="c1"># EV3 Display
+</span><span class="n">lcd</span> <span class="o">=</span> <span class="n">Display</span><span class="p">()</span>
+
+<span class="c1"># Connect ToucSensor
+</span><span class="n">ts</span> <span class="o">=</span> <span class="n">TouchSensor</span><span class="p">(</span><span class="n">INPUT_4</span><span class="p">)</span>
+
+<span class="c1"># Set LEGO port for Pixy2 on input port 1
+</span><span class="n">in1</span> <span class="o">=</span> <span class="n">LegoPort</span><span class="p">(</span><span class="n">INPUT_1</span><span class="p">)</span>
+<span class="n">in1</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s">'other-i2c'</span>
+<span class="c1"># Short wait for the port to get ready
+</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Settings for I2C (SMBus(3) for INPUT_1)
+</span><span class="n">bus</span> <span class="o">=</span> <span class="n">SMBus</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># Make sure the same address is set in Pixy2
+</span><span class="n">address</span> <span class="o">=</span> <span class="mh">0x54</span>
+
+<span class="c1"># Signatures we're interested in (SIG1)
+</span><span class="n">sigs</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Data for requesting block
+</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">174</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sigs</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Read and display data until TouchSensor is pressed
+</span><span class="k">while</span> <span class="ow">not</span> <span class="n">ts</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+    <span class="c1"># Clear display
+</span>    <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="c1"># Request block
+</span>    <span class="n">bus</span><span class="o">.</span><span class="n">write_i2c_block_data</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="c1"># Read block
+</span>    <span class="n">block</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">read_i2c_block_data</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="c1"># Extract data
+</span>    <span class="n">sig</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span><span class="o">*</span><span class="mi">256</span> <span class="o">+</span> <span class="n">block</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span>
+    <span class="c1"># Scale to resolution of EV3 display:
+</span>    <span class="c1"># Resolution Pixy2 while color tracking; (316x208)
+</span>    <span class="c1"># Resolution EV3 display: (178x128)
+</span>    <span class="n">x</span> <span class="o">*=</span> <span class="mf">0.6</span>
+    <span class="n">y</span> <span class="o">*=</span> <span class="mf">0.6</span>
+    <span class="n">w</span> <span class="o">*=</span> <span class="mf">0.6</span>
+    <span class="n">h</span> <span class="o">*=</span> <span class="mf">0.6</span>
+    <span class="c1"># Calculate rectangle to draw on display
+</span>    <span class="n">dx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">xa</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">dx</span>
+    <span class="n">ya</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span>
+    <span class="n">xb</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>
+    <span class="n">yb</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">dy</span>
+    <span class="c1"># Draw rectangle on display
+</span>    <span class="n">lcd</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="n">xa</span><span class="p">,</span> <span class="n">ya</span><span class="p">,</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+    <span class="c1"># Update display to how rectangle
+</span>    <span class="n">lcd</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>This video shows this script running:</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe src="/ev3dev.github.io//www.youtube.com/embed/Wo6f2eQZVSY?rel=0" allowfullscreen="1" class="embed-responsive-item"> </iframe>
+
+</div>
+<p><br /><br /></p>
+
+<div class="panel panel-info">
+<div class="panel-heading">
+<span class="glyphicon glyphicon-info-sign " aria-hidden="true"></span>
+Note
+</div>
+<div class="panel-body">
+
+    <p>When using <code class="highlighter-rouge">smbus</code> there is one important issue you have to think about:
+it is limited to read 32 bytes of data at a time. This is fine for all Pixy2
+functionalities, except for linetracking. The linetracking datablock contains
+more bytes of data, so you cannot read it completely in once. Therefore,
+first read the header bytes, followed by the bytes containing the feature
+data, one feature at a time. This is shown in the example on Github.</p>
+
+  </div>
+</div>
+
+<h2 id="more-info">More info</h2>
+
+<ul>
+  <li>There is a GitHub repository where you can find more detailed information
+and sample code about how to use Pixy and Pixy2 on ev3dev. You can find
+it here: <a href="https://github.com/KWSmit/Pixy_ev3dev">GitHub KWSmit/Pixy_ev3dev</a>.</li>
+  <li>Charmed Lab’s wiki about Pixy/Pixy2:
+<a href="https://docs.pixycam.com/">docs.pixycam.com</a></li>
+</ul>
+
+
+
+
+
+<h2> Authors </h2>
+
+
+<div style="float: left; margin-right: 20px;"><!-- Provides unofficial GitHub card function for include.author variable -->
+
+
+
+
+<!-- first function does not work and truncate function returns trailing "..." -->
+
+<!-- this looks weird, but it was the only way I could figure out how to test
+     that the first character of include.author is "@" -->
+
+    <div class="user-card user-card-light" data-card-user="KWSmit"><div class="user-card-name">@KWSmit</div></div><br/>
+</div>
+
+
+    
+    </div>
+    
+    <div id="footer">
+
+        <div class="cclicense">
+    
+            <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+                www.ev3dev.org (with the exception of the projects pages)
+            </span>
+            is licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" />
+            </a>.
+            <br />
+            You are free to copy the text and images, but please be courteous and acknowledge the source.
+    
+        </div>
+
+    <br />
+    <div class="container">
+        <span>
+            LEGO® is a trademark of the LEGO Group of companies which does not sponsor, authorize or endorse this site
+        </span>
+    </div>
+</div>
+
+    
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/search.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/page-content.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/user-cards.css">
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/tabs.css">
+
+<!-- Python code highlighting -->
+<link rel="stylesheet" href="/ev3dev.github.io/stylesheets/pygments/monokai.css" />
+
+<!-- 3rd-party libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/autotrack.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.getUrlParam.js"></script>
+<script src="/ev3dev.github.io/javascripts/jquery.loadTemplate-1.4.4.min.js"></script>
+<script src="/ev3dev.github.io/javascripts/respond.js"></script>
+<script src="/ev3dev.github.io/javascripts/ua-parser.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+
+<!-- Caches data from requests to API endpoints -->
+<script src="/ev3dev.github.io/javascripts/api-cache.js"></script>
+<!-- Loads user-cards from GH API -->
+<script src="/ev3dev.github.io/javascripts/cards.js"></script>
+<!-- Configures special anchors to link to the most recent ev3dev release -->
+<script src="/ev3dev.github.io/javascripts/releases.js"></script>
+<!-- Responds to queries typed into the "Quick nav" box -->
+<script src="/ev3dev.github.io/javascripts/search.js"></script>
+<!-- Converts static descriptors of tab target content into live text and links -->
+<script src="/ev3dev.github.io/javascripts/tabs.js"></script>
+<!-- Adds classes and other styles to pages where hard-coded css can't be used -->
+<script src="/ev3dev.github.io/javascripts/style-helpers.js"></script>
+</body>
+</html>
+

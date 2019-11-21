@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+  <title>ev3dev News Feed</title>
+  <link href=""/>
+  <link type="application/atom+xml" rel="self" href="/news/atom.xml"/>
+  <updated>Mon, 18 Nov 2019 15:42:02 +0100</updated>
+  <id>/news/atom.xml</id>
+  <author>
+    <name>The ev3dev team</name>
+  </author>
+
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2019/10/29/ev3dev-stretch-r2</id>
+    <link type="text/html" rel="alternate" href="/news/2019/10/29/ev3dev-stretch-r2/"/>
+    <title>ev3dev-stretch R2 Release</title>
+    <updated>Tue, 29 Oct 2019 00:00:00 +0100</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/news/brickman-stable-stamped.png&quot; alt=&quot;Stamped with text: Stable&quot; style=&quot;width: 300px; max-width: 100%;&quot; class=&quot;image-responsive pull-right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Today, we are releasing ev3dev-stretch R2. This is a minor security and stability
+update and is recommended for all users of ev3dev-stretch.
+Thank you to everyone who has downloaded &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-stretch&lt;/code&gt; snapshots, tested them
+and reported issues on GitHub.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Changes since ev3dev-stretch R1:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Updated to Debian 9.9&lt;/li&gt;
+  &lt;li&gt;Improved Bluetooth availability &lt;a href=&quot;https://github.com/ev3dev/ev3dev/issues/925&quot;&gt;#925&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Updated &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-lang-python&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-lang-java&lt;/code&gt; libraries.&lt;/li&gt;
+  &lt;li&gt;Fixed a few small Linux kernel driver bugs&lt;/li&gt;
+  &lt;li&gt;Included the library for the &lt;a href=&quot;./2019-09-24-lego-amazon-voice-control-contest&quot;&gt;Amazon Voice Control Contest&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2019/09/24/lego-amazon-voice-control-contest</id>
+    <link type="text/html" rel="alternate" href="/news/2019/09/24/lego-amazon-voice-control-contest/"/>
+    <title>LEGO and Amazon Announce Voice Control Contest - Built on ev3dev!</title>
+    <updated>Tue, 24 Sep 2019 00:00:00 +0200</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/news/voice-challenge.png&quot; alt=&quot;Official contest banner&quot; style=&quot;width: 300px; max-width: 100%;&quot; class=&quot;image-responsive pull-right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;LEGO and Amazon have announced a contest for creating voice controlled robots
+using Alexa and LEGO MINDSTORMS EV3. And the best part is that it builds on
+ev3dev!&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;There are some substantial prizes and lots of smaller prizes. There is even a
+special category for 13 to 17 year-olds. And the first 100 people to submit
+an entry are even eligible for a prize.&lt;/p&gt;
+
+&lt;p&gt;Check out the details at &lt;a href=&quot;https://www.hackster.io/contests/alexa-lego-voice-challenge&quot;&gt;https://www.hackster.io/contests/alexa-lego-voice-challenge&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2019/09/08/ev3dev-stretch-r2-release-candidate</id>
+    <link type="text/html" rel="alternate" href="/news/2019/09/08/ev3dev-stretch-r2-release-candidate/"/>
+    <title>ev3dev-stretch R2 Release Candidate</title>
+    <updated>Sun, 08 Sep 2019 00:00:00 +0200</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/news/brickman-rc-stamped.png&quot; alt=&quot;Stamped with text: Release Candidate&quot; style=&quot;width: 300px; max-width: 100%;&quot; class=&quot;image-responsive pull-right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We have a new stable release candidate ready for testing. Be a pal and try it out.&lt;/p&gt;
+
+&lt;p&gt;Download &lt;code class=&quot;highlighter-rouge&quot;&gt;snapshot-ev3dev-stretch-ev3-generic-2019-09-08.img.xz&lt;/code&gt; from &lt;a href=&quot;https://oss.jfrog.org/list/oss-snapshot-local/org/ev3dev/brickstrap/2019-09-08/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Changes since ev3dev-stretch R1:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Updated to Debian 9.9&lt;/li&gt;
+  &lt;li&gt;Improved Bluetooth availability &lt;a href=&quot;https://github.com/ev3dev/ev3dev/issues/925&quot;&gt;#925&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Updated &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-lang-python&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-lang-java&lt;/code&gt; libraries.&lt;/li&gt;
+  &lt;li&gt;A few small Linux kernel driver fixes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If all goes well, this will become the new main download in a few weeks.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2019/04/13/ev3-micropython</id>
+    <link type="text/html" rel="alternate" href="/news/2019/04/13/ev3-micropython/"/>
+    <title>LEGO releases MicroPython for EV3 based on ev3dev and Pybricks</title>
+    <updated>Sat, 13 Apr 2019 00:00:00 +0200</updated>
+    <author>
+      <name>@laurensvalk</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/news/ev3micropython.png&quot; alt=&quot;EV3 MicroPython&quot; style=&quot;width: 600px; max-width: 100%;&quot; class=&quot;image-responsive pull-right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;LEGO just officially released MicroPython for LEGO MINDSTORMS EV3 and it runs on top of ev3dev!&lt;/p&gt;
+
+&lt;p&gt;With contributions from the community, LEGO has worked hard to make (Micro)Python programming more accessible than ever.&lt;/p&gt;
+
+&lt;p&gt;Head over to the &lt;a href=&quot;https://education.lego.com/en-us/support/mindstorms-ev3/python-for-ev3&quot;&gt;LEGO Education website&lt;/a&gt; to give it a try.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;EV3 MicroPython runs on top of ev3dev with a new Pybricks MicroPython runtime and library. It also comes with a dedicated Visual Studio Code extension that includes project templates and documentation to get started. EV3 MicroPython is designed to be easier to use for beginners by taking away some of the complexity of getting started with Python programming on the EV3.&lt;/p&gt;
+
+&lt;p&gt;At the same time, the Pybricks MicroPython runtime adds many exciting features that make EV3 robots more powerful and easier to control. This includes brand new drivers and APIs to make motor control easier and more accurate. We think that especially FLL teams will love features such as built-in gearing compensation, drive base classes, or integrated stall detection.&lt;/p&gt;
+
+&lt;p&gt;Once the source code for this Pybricks library is publicly available, it might find its way into regular ev3dev releases as well. It wouldn’t replace any existing libraries or runtimes — everything you know and love about ev3dev will continue to be included as well.&lt;/p&gt;
+
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2019/04/12/ev3dev-stretch</id>
+    <link type="text/html" rel="alternate" href="/news/2019/04/12/ev3dev-stretch/"/>
+    <title>ev3dev-stretch is Stable</title>
+    <updated>Fri, 12 Apr 2019 00:00:00 +0200</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/news/brickman-stable-stamped.png&quot; alt=&quot;Stamped with text: Stable&quot; style=&quot;width: 300px; max-width: 100%;&quot; class=&quot;image-responsive pull-right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks to everyone who has downloaded &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-stretch&lt;/code&gt; snapshots, tested the
+latest kernel and reported issues on GitHub. We’re declaring ev3dev-stretch
+as the new stable version of ev3dev.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;That means we’re saying so-long to &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-jessie&lt;/code&gt; and hello to &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev-buster&lt;/code&gt;
+as the new experimental version of ev3dev (we tend to lag behind one release
+from the official Debian project that ev3dev is based on). There might not be as
+much development going on as there used to be, but more people are using ev3dev
+now than there ever have been. We hope you have as much fun using it as we have
+had making it!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you &lt;em&gt;really&lt;/em&gt;, &lt;em&gt;really&lt;/em&gt; need ev3dev-jessie, you can still find the
+downloads on the &lt;a href=&quot;https://github.com/ev3dev/ev3dev/releases/tag/ev3dev-jessie-2017-09-14&quot;&gt;GitHub releases&lt;/a&gt; page.&lt;/p&gt;
+
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2019/02/18/ev3dev-stretch</id>
+    <link type="text/html" rel="alternate" href="/news/2019/02/18/ev3dev-stretch/"/>
+    <title>ev3dev-stretch Stable Release Candidate</title>
+    <updated>Mon, 18 Feb 2019 00:00:00 +0100</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;We’ve been quietly squashing bugs in ev3dev-stretch over the past six months and
+we think it time to take it out of beta.&lt;/p&gt;
+
+&lt;p&gt;Some interesting new features include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A Visual Studio Code Extension for &lt;a href=&quot;https://github.com/ev3dev/vscode-hello-python&quot;&gt;easy programming&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://github.com/ev3dev/brickrun/blob/ev3dev-stretch/doc/brickrun.rst&quot;&gt;brickrun&lt;/a&gt; command line tool&lt;/li&gt;
+  &lt;li&gt;Grayscale support for the EV3 screen&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lechnology.com/2018/06/overclocking-lego-mindstorms-ev3-part-2/&quot;&gt;Adjust the CPU frequency of the EV3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you run into any problems, be sure to &lt;a href=&quot;https://github.com/ev3dev/ev3dev/issues&quot;&gt;open an issue on GitHub&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2018/08/06/python-ev3dev-v2</id>
+    <link type="text/html" rel="alternate" href="/news/2018/08/06/python-ev3dev-v2/"/>
+    <title>python-ev3dev version 2 for ev3dev-stretch available in beta</title>
+    <updated>Mon, 06 Aug 2018 00:00:00 +0200</updated>
+    <author>
+      <name>@WasabiFan</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/images/news/python-sample.png&quot; alt=&quot;Python driving sample&quot; style=&quot;width: 500px; max-width: 100%;&quot; class=&quot;image-responsive pull-right&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After several months’ work, python-ev3dev version 2 is available in beta. This
+release is specifically targeted at &lt;a href=&quot;https://www.ev3dev.org/news/2018/06/14/ev3dev-stretch/&quot;&gt;ev3dev-stretch&lt;/a&gt;,
+and comes with a variety of improvements to existing interfaces as well as some
+new features. In particular, we hope that writing software for driving robots
+will now be significantly easier.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;The highlights include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;New classes are available for coordinating motors: &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.MotorSet&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.MoveTank&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.MoveSteering&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.MoveJoystick&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Classes representing a variety of motor speed units are available and accepted by many of the motor interfaces: see &lt;a href=&quot;https://python-ev3dev.readthedocs.io/en/ev3dev-stretch/motors.html#units&quot;&gt;our docs&lt;/a&gt; to learn more.&lt;/li&gt;
+  &lt;li&gt;Friendlier interfaces for operating motors and sensors: check out &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.motor.Motor.on_for_rotations&lt;/code&gt; and the other &lt;code class=&quot;highlighter-rouge&quot;&gt;on_for_*&lt;/code&gt; methods on motors.&lt;/li&gt;
+  &lt;li&gt;Easier interactivity via buttons: each button now has &lt;code class=&quot;highlighter-rouge&quot;&gt;wait_for_pressed&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;wait_for_released&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;wait_for_bump&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Improved &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.sound.Sound&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.display.Display&lt;/code&gt; interfaces&lt;/li&gt;
+  &lt;li&gt;New color conversion methods in &lt;code class=&quot;highlighter-rouge&quot;&gt;ev3dev2.sensor.lego.ColorSensor&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you haven’t already, see @dlech’s &lt;a href=&quot;https://www.ev3dev.org/news/2018/06/14/ev3dev-stretch/&quot;&gt;news post on Stretch&lt;/a&gt;
+for information on the new ev3dev version. If you’re running the &lt;a href=&quot;https://oss.jfrog.org/list/oss-snapshot-local/org/ev3dev/brickstrap/2018-08-06/&quot;&gt;image from August 6&lt;/a&gt;
+or newer, the library should come pre-installed; otherwise, you’ll need
+to install the &lt;code class=&quot;highlighter-rouge&quot;&gt;python3-ev3dev2&lt;/code&gt; package via &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once your ev3dev installation is ready, head over to our &lt;a href=&quot;https://python-ev3dev.readthedocs.io/en/ev3dev-stretch/upgrading-to-stretch.html&quot;&gt;upgrading guide&lt;/a&gt;
+to get started!&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2018/06/14/ev3dev-stretch</id>
+    <link type="text/html" rel="alternate" href="/news/2018/06/14/ev3dev-stretch/"/>
+    <title>ev3dev-stretch</title>
+    <updated>Thu, 14 Jun 2018 00:00:00 +0200</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;The ev3dev news has been quite for while, but we’ve slowly been plodding along
+on ev3dev-stretch. If you haven’t tried it yet, it now is a good time. Look
+for the blue box on the &lt;a href=&quot;/downloads&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Some interesting new features include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A Visual Studio Code Extension for &lt;a href=&quot;https://github.com/ev3dev/vscode-hello-python&quot;&gt;easy programming&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://github.com/ev3dev/brickrun/blob/ev3dev-stretch/doc/brickrun.rst&quot;&gt;brickrun&lt;/a&gt; command line tool&lt;/li&gt;
+  &lt;li&gt;Grayscale support for the EV3 screen&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lechnology.com/2018/06/overclocking-lego-mindstorms-ev3-part-2/&quot;&gt;Adjust the CPU frequency of the EV3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you run into any problems, be sure to &lt;a href=&quot;https://github.com/ev3dev/ev3dev/issues&quot;&gt;open an issue on GitHub&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/09/17/ev3dev-in-podcast-init</id>
+    <link type="text/html" rel="alternate" href="/news/2017/09/17/ev3dev-in-podcast-init/"/>
+    <title>ev3dev in episode 127 of `podcast.__init__`</title>
+    <updated>Sun, 17 Sep 2017 00:00:00 +0200</updated>
+    <author>
+      <name>@ddemidov</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.podcastinit.com/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;podcast.__init__&lt;/code&gt;&lt;/a&gt; is the Podcast About Python and the People Who Make It Great,
+and &lt;a href=&quot;https://www.podcastinit.com/lego-robotics-with-david-lechner-and-denis-demidov-episode-127/&quot;&gt;Episode 127&lt;/a&gt;
+is about Legos, robots, and Python! Tobias Macey talks with David Lechner and Denis Demidov about
+the ev3dev project and how you can program your Lego Mindstorms with Python!&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <id>/news/2017/09/14/ev3dev-jessie-2017-09-14-release</id>
+    <link type="text/html" rel="alternate" href="/news/2017/09/14/ev3dev-jessie-2017-09-14-release/"/>
+    <title>Announcing ev3dev-jessie-2017-09-14 Release</title>
+    <updated>Thu, 14 Sep 2017 00:00:00 +0200</updated>
+    <author>
+      <name>@dlech</name>
+      <uri>http://www.ev3dev.org/</uri>
+    </author>
+    <content type="html">&lt;p&gt;This is a stable maintenance release. We’ve pulled in the updates and security
+fixes from &lt;a href=&quot;https://www.debian.org/News/2017/2017072202&quot;&gt;Debian 8.9&lt;/a&gt; and the
+most recent ev3dev kernel.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;There is a fix that should make Bluetooth start more reliably on the EV3 (i.e.
+Bluetooth shows as “Unavailable” until the EV3 is rebooted).&lt;/p&gt;
+
+&lt;p&gt;The only other notable change is for those with the &lt;a href=&quot;/news/2015/07/24/Color-LCD-on-the-EV3/&quot;&gt;color screen hack&lt;/a&gt;,
+a crash at boot is fixed.&lt;/p&gt;
+
+&lt;p&gt;Most of our work has been focused on &lt;strong&gt;ev3dev-stretch&lt;/strong&gt;. It is nearing beta
+quality, so you might want to &lt;a href=&quot;http://docs.ev3dev.org/en/ev3dev-stretch/&quot;&gt;check it out&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;download&quot;&gt;Download&lt;/h3&gt;
+
+&lt;p&gt;You can find SD card images on our &lt;a href=&quot;/downloads&quot;&gt;download&lt;/a&gt; page.&lt;/p&gt;
+</content>
+  </entry>
+  
+  
+  
+  
+  
+ 
+</feed>
